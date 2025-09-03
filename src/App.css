@@ -1,38 +1,1935 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 55px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.menu-icon {
+  width: 80px;
+  height: 60px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 40px;
+  right: 32px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 110px;
+  height: 110px;
+}
+
+.title {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.title-icon {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 80vh;
+  opacity: 0.9;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 30vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
+.message {
+  margin-top: 10px;
+  font-size: 1.2em;
+  text-align: center;
+  z-index: 10;
+}
+
+.coming-soon-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 600px; /* Increased minimum width */
+  max-width: 90%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.close-btn:hover {
+  background: #6a1ec2;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 700px;
+  max-width: 90%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 1em;
+  width: 30%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.check-btn:hover {
+  background: #6a1ec2;
+}
+
+.wallet-message {
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px; /* Increased padding for more space */
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px; /* Increased minimum width */
+  min-height: 500px;
+  max-width: 90%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: contain;
+  background-position: left 10px top 133px;
+  background-repeat: no-repeat;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.tab-btn.active {
+  background: #6a1ec2;
+}
+
+.tab-btn:hover {
+  background: #6a1ec2;
+}
+
+.tab-content {
+  padding: 20px;
+  min-height: 400px; /* Minimum height to match tallest content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.tab-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all children horizontally */
+  width: 100%; /* Ensure full width of tab-content */
+}
+
+.tab-panel h3 {
+  position: relative;
+  top: -20px;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.tab-panel p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  max-width: 58%;
+  text-align: justify;
+  margin-left: auto; /* Push from left */
+  margin-right: auto;
+  overflow-wrap: break-word; /* Ensures long words break to fit */
+  word-wrap: break-word;
+}
+
+.tab-panel a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.tab-panel a:hover {
+  color: #d3d3d3;
+}
+
+/* for dropdown */
+.slideshow {
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.slide-container {
+  display: flex;
+  width: 500%;
+  transition: transform 0.7s ease-in-out;
+  justify-content: center;
+}
+
+.slide-image {
+  max-width: 390px;
+  max-height: 370px;
+  height: auto;
+  border-radius: 5px;
+  transition: opacity 0.5s ease-in-out;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  transform: translateX(-70px, -50px);
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
+/*  small phone 320px */
+
+@media (min-width: 320px) {
+  .app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 60px;
+  height: 50px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 35px;
+  right: -13px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 85px;
+  height: 110px;
+}
+
+.title {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 15vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 400px; /* Increased minimum width */
+  max-width: 70%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 0.85em;
+  margin-bottom: 20px;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px;
+  max-width: 70%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 1.25em;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 0.8em;
+  width: 25%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.wallet-message {
+  margin-top: 8px;
+  font-size: 1.0em;
+  color: #fff;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.close-btn {
+  padding: 8px 10px; /* Smaller close button */
+  font-size: 0.8em;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5px; /* Increased padding for more space */
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 260px; /* Increased minimum width */
+  min-height: 320px;
+  max-width: 85%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.tab-panel p[type='fuck'] {
+  font-size: 0.87em; /* Slightly smaller to reduce vertical space */
+  max-width: 100%; /* Full width to eliminate side spaces */
+  margin: 0; /* Vertical spacing only */
+  text-align: justify; 
+  padding: 0; /* Prevent edge touching */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-wrap: break-word; /* Prevent horizontal overflow */
+  line-height: 1.2;
+  margin-top: -15px; /* Increase line spacing for readability */
   }
-  to {
-    transform: rotate(360deg);
+
+.tab-btn {
+  padding: 8px 10px; /* Smaller buttons */
+  margin: 5px 0; /* Space between stacked buttons */    font-size: 0.8em; /* Smaller font for buttons */
+  font-size: 0.75em;  
+}
+
+.tab-buttons {
+  flex-direction: column; /* Stack buttons */
+  margin-bottom: 10px;
   }
+
+.close-btn {
+  padding: 8px 10px;
+  font-size: 0.8em;
+  }
+  
+.tab-content{
+  min-height: 300px;
+}
+
+.slideshow {
+  width: 100%;
+  height : 220px;
+}
+
+.slide-image {
+  max-width: 260px;
+  max-height: 220px;
+  transform: none;
+  margin: 0 auto 0 -1px;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: 185% 52%;
+  background-position: center 138px;
+  background-repeat: no-repeat;
+}
+
+.tab-panel p[type='describe'] {
+  font-size: 0.85em; /* Match ABOUT for consistency */
+  width: 100%; /* Full width to spread text */
+  max-width: 100%;
+  margin: 0; /* Remove margins to touch edges */
+  text-align: justify; /* Keep justified */
+  padding: 0; /* No padding to maximize width */
+  box-sizing: border-box; /* Include any padding */
+  overflow-wrap: break-word; /* Prevent overflow */
+  line-height: 1.2; /* Consistent spacing */
+  }
+
+}
+
+
+
+
+
+/*  for 480px */
+@media (min-width: 480px) {
+  .app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 60px;
+  height: 50px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 35px;
+  right: -10px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 83px;
+  height: 130px;
+}
+
+.title {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 15vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 450px;
+  height: auto;
+  object-fit: contain;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px; /* Increased minimum width */
+  max-width: 90%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 0.90em;
+  margin-bottom: 20px;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px;
+  max-width: 70%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 1.25em;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 0.8em;
+  width: 28%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.wallet-message {
+  margin-top: 8px;
+  font-size: 1.0em;
+  color: #fff;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.close-btn {
+  padding: 8px 20px; /* Smaller close button */
+  font-size: 0.8em;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5px; /* Increased padding for more space */
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 260px; /* Increased minimum width */
+  min-height: 320px;
+  max-width: 85%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.tab-panel p[type='fuck'] {
+  font-size: 0.87em; /* Slightly smaller to reduce vertical space */
+  max-width: 100%; /* Full width to eliminate side spaces */
+  margin: 0; /* Vertical spacing only */
+  text-align: justify; 
+  padding: 0; /* Prevent edge touching */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-wrap: break-word; /* Prevent horizontal overflow */
+  line-height: 1.2;
+  margin-top: -15px; /* Increase line spacing for readability */
+  }
+
+.tab-btn {
+  padding: 8px 10px; /* Smaller buttons */
+  margin: 5px 0; /* Space between stacked buttons */    font-size: 0.8em; /* Smaller font for buttons */
+  font-size: 0.75em;  
+}
+
+.tab-buttons {
+  flex-direction: column; /* Stack buttons */
+  margin-bottom: 10px;
+  }
+
+.close-btn {
+  padding: 8px 10px;
+  font-size: 0.8em;
+  }
+  
+.tab-content{
+  min-height: 300px;
+}
+
+.slideshow {
+  width: 100%;
+  height : 220px;
+}
+
+.slide-image {
+  max-width: 300px;
+  max-height: 213px;
+  transform: none;
+  margin: 0 auto 0 70px;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: 125% 50%;
+  background-position: center 150px;
+  background-repeat: no-repeat;
+}
+
+.tab-panel p[type='describe'] {
+  font-size: 0.85em; /* Match ABOUT for consistency */
+  width: 100%; /* Full width to spread text */
+  max-width: 100%;
+  margin: 0; /* Remove margins to touch edges */
+  text-align: justify; /* Keep justified */
+  padding: 0; /* No padding to maximize width */
+  box-sizing: border-box; /* Include any padding */
+  overflow-wrap: break-word; /* Prevent overflow */
+  line-height: 1.2; /* Consistent spacing */
+  }
+
+}
+
+
+
+/* for 768px */
+
+@media (min-width: 768px) {
+  .app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 60px;
+  height: 50px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 40px;
+  right: -10px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 83px;
+  height: 130px;
+}
+
+.title {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 15vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 450px;
+  height: auto;
+  object-fit: contain;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px; /* Increased minimum width */
+  max-width: 90%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 0.90em;
+  margin-bottom: 20px;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px;
+  max-width: 70%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 1.25em;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 0.8em;
+  width: 28%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.wallet-message {
+  margin-top: 8px;
+  font-size: 1.0em;
+  color: #fff;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.close-btn {
+  padding: 8px 20px; /* Smaller close button */
+  font-size: 0.8em;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5px; /* Increased padding for more space */
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 85%; /* Increased minimum width */
+  min-height: 320px;
+  max-width: 85%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.tab-panel p[type='fuck'] {
+  font-size: 0.87em; /* Slightly smaller to reduce vertical space */
+  max-width: 82%; /* Full width to eliminate side spaces */
+  margin: 0; /* Vertical spacing only */
+  text-align: justify; 
+  padding: 0; /* Prevent edge touching */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-wrap: break-word; /* Prevent horizontal overflow */
+  line-height: 1.2;
+  margin-top: -15px; /* Increase line spacing for readability */
+  }
+
+
+.tab-btn {
+  padding: 8px 10px; /* Smaller buttons */
+  margin: 5px 0; /* Space between stacked buttons */    font-size: 0.8em; /* Smaller font for buttons */
+  font-size: 0.75em;  
+}
+
+.tab-buttons {
+  flex-direction: column; /* Stack buttons */
+  margin-bottom: 10px;
+  }
+
+.close-btn {
+  padding: 8px 10px;
+  font-size: 0.8em;
+  }
+  
+.tab-content{
+  min-height: 300px;
+}
+
+.slideshow {
+  width: 100%;
+  height : 220px;
+}
+
+.slide-image {
+  max-width: 300px;
+  max-height: 212px;
+  transform: none;
+  margin: 0 auto 0 193px;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: 75% 50%;
+  background-position: center 150px;
+  background-repeat: no-repeat;
+}
+
+.tab-panel p[type='describe'] {
+  font-size: 0.85em; /* Match ABOUT for consistency */
+  width: 100%; /* Full width to spread text */
+  max-width: 100%;
+  margin: 0; /* Remove margins to touch edges */
+  text-align: justify; /* Keep justified */
+  padding: 0; /* No padding to maximize width */
+  box-sizing: border-box; /* Include any padding */
+  overflow-wrap: break-word; /* Prevent overflow */
+  line-height: 1.2; /* Consistent spacing */
+  }
+
+}
+
+
+
+
+/* for 1024 */
+
+@media (min-width: 1024px) {
+  .app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 60px;
+  height: 50px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 45px;
+  right: -10px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 83px;
+  height: 130px;
+}
+
+.title {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 15vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 550px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: -55px;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px; /* Increased minimum width */
+  max-width: 90%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 0.90em;
+  margin-bottom: 20px;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px;
+  max-width: 70%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 1.25em;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 0.8em;
+  width: 28%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.wallet-message {
+  margin-top: 8px;
+  font-size: 1.0em;
+  color: #fff;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.close-btn {
+  padding: 8px 20px; /* Smaller close button */
+  font-size: 0.8em;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 5px; /* Increased padding for more space */
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 85%; /* Increased minimum width */
+  min-height: 320px;
+  max-width: 85%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.tab-panel p[type='fuck'] {
+  font-size: 0.87em; /* Slightly smaller to reduce vertical space */
+  max-width: 60%; /* Full width to eliminate side spaces */
+  margin: 0; /* Vertical spacing only */
+  text-align: justify; 
+  padding: 0; /* Prevent edge touching */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-wrap: break-word; /* Prevent horizontal overflow */
+  line-height: 1.2;
+  margin-top: -15px; /* Increase line spacing for readability */
+  }
+
+
+.tab-btn {
+  padding: 8px 10px; /* Smaller buttons */
+  margin: 5px 0; /* Space between stacked buttons */    font-size: 0.8em; /* Smaller font for buttons */
+  font-size: 0.75em;  
+}
+
+.tab-buttons {
+  flex-direction: column; /* Stack buttons */
+  margin-bottom: 10px;
+  }
+
+.close-btn {
+  padding: 8px 10px;
+  font-size: 0.8em;
+  }
+  
+.tab-content{
+  min-height: 300px;
+}
+
+.slideshow {
+  width: 100%;
+  height : 220px;
+}
+
+.slide-image {
+  max-width: 300px;
+  max-height: 212px;
+  transform: translateY(-3.5px);
+  margin: 0 auto 0 302px;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: 58% 50%;
+  background-position: center 140px;
+  background-repeat: no-repeat;
+}
+
+.tab-panel p[type='describe'] {
+  font-size: 0.85em; /* Match ABOUT for consistency */
+  width: 35%; /* Full width to spread text */
+  max-width: 100%;
+  margin: 0; /* Remove margins to touch edges */
+  text-align: justify; /* Keep justified */
+  padding: 0; /* No padding to maximize width */
+  box-sizing: border-box; /* Include any padding */
+  overflow-wrap: break-word; /* Prevent overflow */
+  line-height: 1.2; /* Consistent spacing */
+  }
+
+}
+
+
+
+/* for 1189 */
+@media (min-width: 1189px) {
+  .app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 60px;
+  height: 50px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 50px;
+  right: -10px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 83px;
+  height: 130px;
+}
+
+.title {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 15vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 550px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: -55px;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px; /* Increased minimum width */
+  max-width: 90%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 0.90em;
+  margin-bottom: 20px;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px;
+  max-width: 70%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 1.25em;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 0.8em;
+  width: 28%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.wallet-message {
+  margin-top: 8px;
+  font-size: 1.0em;
+  color: #fff;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.close-btn {
+  padding: 8px 20px; /* Smaller close button */
+  font-size: 0.8em;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center 20px;
+  background-repeat: no-repeat;
+  padding: 5px; /* Increased padding for more space */
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 85%; /* Increased minimum width */
+  min-height: 320px;
+  max-width: 85%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.tab-panel p[type='fuck'] {
+  font-size: 0.87em; /* Slightly smaller to reduce vertical space */
+  max-width: 55%; /* Full width to eliminate side spaces */
+  margin: 0; /* Vertical spacing only */
+  text-align: justify; 
+  padding: 0; /* Prevent edge touching */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-wrap: break-word; /* Prevent horizontal overflow */
+  line-height: 1.2;
+  margin-top: -15px; /* Increase line spacing for readability */
+  }
+
+
+.tab-btn {
+  padding: 8px 10px; /* Smaller buttons */
+  margin: 5px 0; /* Space between stacked buttons */    font-size: 0.8em; /* Smaller font for buttons */
+  font-size: 0.75em;  
+}
+
+.tab-buttons {
+  flex-direction: column; /* Stack buttons */
+  margin-bottom: 10px;
+  }
+
+.close-btn {
+  padding: 8px 10px;
+  font-size: 0.8em;
+  }
+  
+.tab-content{
+  min-height: 300px;
+}
+
+.slideshow {
+  width: 100%;
+  height : 260px;
+}
+
+.slide-image {
+  max-width: 300px;
+  max-height: 240px;
+  transform: translateY(-10px) translateX(-10px);
+  margin: 0 auto 0 368px;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: 58% 53%;
+  background-position: center 130px;
+  background-repeat: no-repeat;
+}
+
+.tab-panel p[type='describe'] {
+  font-size: 0.85em; /* Match ABOUT for consistency */
+  width: 35%; /* Full width to spread text */
+  max-width: 100%;
+  margin: 0; /* Remove margins to touch edges */
+  text-align: justify; /* Keep justified */
+  padding: 0; /* No padding to maximize width */
+  box-sizing: border-box; /* Include any padding */
+  overflow-wrap: break-word; /* Prevent overflow */
+  line-height: 1.2; /* Consistent spacing */
+  }
+
+}
+
+
+/*  over 1280 */
+
+@media (min-width: 1280px) {
+  .app {
+  background-image: url('./nebula.jpeg');
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Arial Black', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-tab {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-icon {
+  width: 60px;
+  height: 50px;
+}
+
+.wallet-tab {
+  position: absolute;
+  top: 60px;
+  right: -10px;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.wallet-icon {
+  width: 83px;
+  height: 130px;
+}
+
+.title {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  margin: 0;
+  text-align: center;
+}
+
+.play-button {
+  background: transparent;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  transform: skew(-20deg);
+  font-weight: bold;
+  margin-top: 15vh;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 5px;
+}
+
+.play-icon {
+  width: 550px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: -55px;
+}
+
+.coming-soon-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 450px; /* Increased minimum width */
+  max-width: 90%;
+  box-shadow: none; 
+}
+
+.coming-soon-modal h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px #8a2be2;
+}
+
+.coming-soon-modal p {
+  font-size: 0.90em;
+  margin-bottom: 20px;
+}
+
+.wallet-modal {
+  background-image: url('./my-background.png'); /* Replace with your PNG path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 120px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 550px;
+  max-width: 90%;
+  box-shadow: none;
+}
+
+.wallet-modal h2 {
+  font-size: 2.0em;
+}
+
+.wallet-input {
+  padding: 10px;
+  font-size: 0.8em;
+  width: 40%;
+  border: 2px solid #8a2be2;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 10px;
+}
+
+.wallet-message {
+  margin-top: 8px;
+  font-size: 1.0em;
+  color: #fff;
+}
+
+.wallet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.close-btn {
+  padding: 8px 20px; /* Smaller close button */
+  font-size: 0.8em;
+}
+
+.check-btn {
+  background: #8a2be2;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.menu-modal {
+  background-image: url('./my-background.png'); /* Using your PNG file */
+  background-size: cover; /* Ensures the full image fits */
+  background-position: center 20px;
+  background-repeat: no-repeat;
+  padding: 5px; /* Increased padding for more space */
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  animation: bounceIn 0.5s ease-out;
+  min-width: 85%; /* Increased minimum width */
+  min-height: 320px;
+  max-width: 85%; /* Responsive max width */
+  box-shadow: none;
+}
+
+.tab-panel p[type='fuck'] {
+  font-size: 0.87em; /* Slightly smaller to reduce vertical space */
+  max-width: 55%; /* Full width to eliminate side spaces */
+  margin: 0; /* Vertical spacing only */
+  text-align: justify; 
+  padding: 0; /* Prevent edge touching */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-wrap: break-word; /* Prevent horizontal overflow */
+  line-height: 2.5;
+  margin-top: 65px; /* Increase line spacing for readability */
+  }
+
+
+.tab-btn {
+  padding: 8px 10px; /* Smaller buttons */
+  margin: 5px 0; /* Space between stacked buttons */    font-size: 0.8em; /* Smaller font for buttons */
+  font-size: 0.75em;  
+}
+
+.tab-buttons {
+  flex-direction: column; /* Stack buttons */
+  margin-bottom: 10px;
+  }
+
+.close-btn {
+  padding: 8px 10px;
+  font-size: 0.8em;
+  }
+  
+.tab-content{
+  min-height: 300px;
+}
+
+.slideshow {
+  width: 100%;
+  height : 260px;
+}
+
+.slide-image {
+  max-width: 300px;
+  max-height: 240px;
+  transform: translateY(-10px) translateX(-10px);
+  margin: 0 auto 0 473px;
+}
+
+.menu-modal.sneak-peaks-tab {
+  background-image: url('./sneakpeak_back.png'); /* New rectangular PNG */
+  background-size: 47% 53%;
+  background-position: center 130px;
+  background-repeat: no-repeat;
+}
+
+.tab-panel p[type='describe'] {
+  font-size: 0.85em; /* Match ABOUT for consistency */
+  width: 35%; /* Full width to spread text */
+  max-width: 100%;
+  margin: 0; /* Remove margins to touch edges */
+  text-align: justify; /* Keep justified */
+  padding: 0; /* No padding to maximize width */
+  box-sizing: border-box; /* Include any padding */
+  overflow-wrap: break-word; /* Prevent overflow */
+  line-height: 1.2; /* Consistent spacing */
+  }
+
 }
