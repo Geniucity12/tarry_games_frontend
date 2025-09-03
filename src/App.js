@@ -16,7 +16,9 @@ import sneakPeak5 from './sneakpeak5.png';
 const sneakPeakImages = [sneakPeak1, sneakPeak2, sneakPeak3, sneakPeak4, sneakPeak5];
 
 // API base (use REACT_APP_API_URL to override in environment)
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+// Default to empty string so fetch uses a relative URL (avoids mixed-content when frontend is served over HTTPS).
+// If you need to call a separate backend during development, set REACT_APP_API_URL in a .env file.
+const API_BASE = process.env.REACT_APP_API_URL !== undefined ? process.env.REACT_APP_API_URL : '';
 
 function App() {
   const [isWhitelisted, setIsWhitelisted] = useState(null);
@@ -35,14 +37,40 @@ function App() {
       return;
     }
     try {
-  const response = await fetch(`${API_BASE}/check_wallet?address=${walletAddress}`);
-      const data = await response.json();
-      setIsWhitelisted(data.whitelisted);
-      setMessage(data.whitelisted ? 'Congratulations! You are on the whitelist!' : 'Sorry, you are not on the whitelist.');
+      const url = `${API_BASE}/check_wallet?address=${walletAddress}`;
+      // Helpful log for debugging network issues in the browser console
+      // (will show whether we're hitting a relative path or a configured API URL)
+      // eslint-disable-next-line no-console
+      console.log('Checking whitelist URL:', url);
+      const response = await fetch(url, { mode: 'cors' });
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok) {
+        const text = await response.text();
+        // eslint-disable-next-line no-console
+        console.error('Whitelist check non-OK response', response.status, text);
+        const snippet = text ? (text.length > 300 ? text.slice(0, 300) + '...' : text) : '';
+        setMessage(`Whitelist check failed: ${response.status} ${response.statusText}. ${snippet}`);
+        return;
+      }
+      // If the response is JSON, parse it. Otherwise show the raw text for debugging
+      if (contentType.includes('application/json')) {
+        const data = await response.json();
+        setIsWhitelisted(data.whitelisted);
+        setMessage(data.whitelisted ? 'Congratulations! You are on the whitelist!' : 'Sorry, you are not on the whitelist.');
+      } else {
+        const text = await response.text();
+        // eslint-disable-next-line no-console
+        console.warn('Whitelist check returned non-JSON response:', text);
+        const snippet = text ? (text.length > 300 ? text.slice(0, 300) + '...' : text) : '';
+        setMessage(`Whitelist check returned non-JSON response: ${snippet}`);
+      }
     } catch (error) {
-      setMessage('Error checking whitelist: ' + error.message);
+      // Include the error and hint about the URL to make debugging easier
+      setMessage('Error checking whitelist: ' + error.message + '. See console for request URL and details.');
+      // eslint-disable-next-line no-console
+      console.error('Whitelist check failed:', error);
     }
-    setShowWalletPopup(false);
+    // Keep the wallet popup open so the user can see messages; close manually with Close button.
   };
 
   const toggleMenu = () => {
