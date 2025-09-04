@@ -15,6 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "start:mock-backend": "node ./dev-server/mock-backend.js",
+  "build:functions": "echo 'Netlify builds serverless functions during deploy'",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

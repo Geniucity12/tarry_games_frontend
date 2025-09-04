@@ -18,7 +18,9 @@ const sneakPeakImages = [sneakPeak1, sneakPeak2, sneakPeak3, sneakPeak4, sneakPe
 // API base (use REACT_APP_API_URL to override in environment)
 // Default to empty string so fetch uses a relative URL (avoids mixed-content when frontend is served over HTTPS).
 // If you need to call a separate backend during development, set REACT_APP_API_URL in a .env file.
-const API_BASE = process.env.REACT_APP_API_URL !== undefined ? process.env.REACT_APP_API_URL : '';
+// Normalize API base: remove trailing slash to avoid accidental double-slashes in URLs
+const rawApiBase = process.env.REACT_APP_API_URL !== undefined ? process.env.REACT_APP_API_URL : '';
+const API_BASE = rawApiBase.replace(/\/$/, '');
 
 function App() {
   const [isWhitelisted, setIsWhitelisted] = useState(null);
@@ -42,7 +44,7 @@ function App() {
       // (will show whether we're hitting a relative path or a configured API URL)
       // eslint-disable-next-line no-console
       console.log('Checking whitelist URL:', url);
-      const response = await fetch(url, { mode: 'cors' });
+  const response = await fetch(url, { mode: 'cors' });
       const contentType = response.headers.get('content-type') || '';
       if (!response.ok) {
         const text = await response.text();
@@ -66,7 +68,8 @@ function App() {
       }
     } catch (error) {
       // Include the error and hint about the URL to make debugging easier
-      setMessage('Error checking whitelist: ' + error.message + '. See console for request URL and details.');
+  // Common causes: network unreachable, CORS blocked, or mixed-content.
+  setMessage('Error checking whitelist: ' + error.message + '. Possible causes: network/CORS/mixed-content. See console for details.');
       // eslint-disable-next-line no-console
       console.error('Whitelist check failed:', error);
     }
