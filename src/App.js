@@ -21,7 +21,7 @@ const sneakPeakImages = [sneakPeak1, sneakPeak2, sneakPeak3, sneakPeak4, sneakPe
 const API_BASE = process.env.REACT_APP_API_URL !== undefined ? process.env.REACT_APP_API_URL : '';
 
 function App() {
-  // const [isWhitelisted, setIsWhitelisted] = useState(null);
+  const [isWhitelisted, setIsWhitelisted] = useState(null);
   const [message, setMessage] = useState('');
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [showWalletPopup, setShowWalletPopup] = useState(false);
@@ -160,6 +160,9 @@ function App() {
               Check
             </button>
             {message && <p className="wallet-message">{message}</p>}
+            {typeof isWhitelisted === 'boolean' && (
+              <p className="wallet-result">{isWhitelisted ? 'Whitelisted' : 'Not whitelisted'}</p>
+            )}
             <button className="close-btn" onClick={closeWalletPopup}>
               Close
             </button>
